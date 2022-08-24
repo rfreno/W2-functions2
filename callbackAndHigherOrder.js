@@ -113,7 +113,11 @@ function contains(arr, name, callback) {
   Hint: you can use a nested for loop to do this.
 */
 
-// CODE HERE
+function uniq(arr, callback) {
+  let set = new Set(arr)
+  const noDuplicates = [...set]
+  return callback(noDuplicates)
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -122,7 +126,9 @@ function contains(arr, name, callback) {
   'The new names array with all the duplicate items removed is [UNIQARRPARAM].'
 */
 
-// CODE HERE
+// uniq(names, function(uniqArr){
+//   console.log(`The new names array with all the duplicate items removed is ${uniqArr}.`)
+// })
 
 
 
@@ -133,7 +139,9 @@ function contains(arr, name, callback) {
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-// CODE HERE 
+function each(arr, callback) {
+  arr.forEach((elem, i) => callback(elem,i))
+}
 
 
 /*
@@ -143,7 +151,7 @@ function contains(arr, name, callback) {
   'The item at index [INDEXPARAM] is [ITEMPARAM].'
 */
 
-// CODE HERE
+// each(names, function(item,index){console.log(`The item at index ${index} is ${item}`)})
 
 
 ////////// PROBLEM 7 //////////
@@ -176,7 +184,13 @@ var users = [
 ]
 // Do not edit the code above.
 
-// CODE HERE 
+function getUserById(arr, id, callback) {
+  for ( let i = 0; i < arr.length; i ++) {
+    if (arr[i].id === id){
+      callback(arr[i])
+    }
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -203,7 +217,7 @@ var users = [
   the two parameters together and return the sum.
 */
 
-// CODE HERE
+const addingFactory = x => (y) => x + y
 
 /*
   Now that you have addingFactory, you can create other
@@ -217,7 +231,7 @@ var users = [
   10 as an arguemnt.
 */
 
-// CODE HERE
+let addTen = addingFactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -229,7 +243,8 @@ var users = [
   to see the different outputs.
 */
 
-// CODE HERE
+// console.log(addTen(3))
+// console.log(addTen(7))
 
 /*
   Let's make another function from the addingFactory. 
@@ -242,4 +257,6 @@ var users = [
   to add any number to your favorite number!
 */
 
-// CODE HERE
+let addThree = addingFactory(3)
+
+// console.log(addThree(3))
